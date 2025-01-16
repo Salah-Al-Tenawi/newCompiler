@@ -52,7 +52,7 @@ classMember
 
 
 propertyDeclaration
-    : ID COLON type ASSIGN initvalue
+    : ID COLON type ASSIGN initvalue SEMICOLON?
     ;
 
 methodDeclaration
@@ -95,12 +95,28 @@ type        : STRING_TYPE
             | ID
             | list;
 
-list : ID LBRACKET RBRACKET
-    | ID LBRACKET RBRACKET ASSIGN LBRACKET bodylist RBRACKET SEMICOLON ;
-    bodylist : (object COMMA?)* | (NUMBER_LIT COMMA?)* ;
-   object : LBRACE bodyobject RBRACE ;
-   bodyobject : (ID COLON initvalue COMMA? )*;
-initvalue :(NUMBER_LIT)+ | (STRING_LIT)+  ;
+list
+    : ID LBRACKET RBRACKET
+    ;
+bodylist
+    : (initvalue (COMMA initvalue)*)? // عناصر المصفوفة
+    ;
+
+object
+    : LBRACE bodyobject RBRACE
+    ;
+
+bodyobject
+    : (ID COLON initvalue (COMMA ID COLON initvalue)*)?
+    ;
+
+   initvalue
+     : NUMBER_LIT                 // قيمة رقمية
+     | STRING_LIT                 // قيمة نصية
+     | isboolean               // قيمة منطقية
+     | LBRACKET bodylist RBRACKET
+     | object// مصفوفة
+ ;
 
 expression  : STRING_LIT
             | NUMBER_LIT
@@ -145,3 +161,7 @@ argument    : expression
 //    : methodDeclaration
 //    | propertyDeclaration
 //    ;
+
+
+
+
