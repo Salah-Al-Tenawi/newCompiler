@@ -113,13 +113,13 @@ public class typescriptparserBaseListener implements typescriptparserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStyle(typescriptparser.StyleContext ctx) { }
+	@Override public void enterStyles(typescriptparser.StylesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStyle(typescriptparser.StyleContext ctx) { }
+	@Override public void exitStyles(typescriptparser.StylesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -197,6 +197,30 @@ public class typescriptparserBaseListener implements typescriptparserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMethodBody(typescriptparser.MethodBodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethodBody(typescriptparser.MethodBodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatementMethod(typescriptparser.StatementMethodContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatementMethod(typescriptparser.StatementMethodContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInterfaceDeclaration(typescriptparser.InterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -221,18 +245,6 @@ public class typescriptparserBaseListener implements typescriptparserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionDeclaration(typescriptparser.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunctionDeclaration(typescriptparser.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterParameter(typescriptparser.ParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -240,6 +252,18 @@ public class typescriptparserBaseListener implements typescriptparserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitParameter(typescriptparser.ParameterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParameterList(typescriptparser.ParameterListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParameterList(typescriptparser.ParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -372,66 +396,6 @@ public class typescriptparserBaseListener implements typescriptparserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArgument(typescriptparser.ArgumentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTypescriptFile(typescriptparser.TypescriptFileContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTypescriptFile(typescriptparser.TypescriptFileContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterImportStatement(typescriptparser.ImportStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitImportStatement(typescriptparser.ImportStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterImportSpecifier(typescriptparser.ImportSpecifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitImportSpecifier(typescriptparser.ImportSpecifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterClassBody(typescriptparser.ClassBodyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitClassBody(typescriptparser.ClassBodyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterClassBodyContent(typescriptparser.ClassBodyContentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitClassBodyContent(typescriptparser.ClassBodyContentContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

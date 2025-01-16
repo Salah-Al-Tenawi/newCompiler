@@ -10,7 +10,7 @@ statement   :
               componentDeclaration
             |classDeclaration
             | interfaceDeclaration
-            | functionDeclaration
+            | methodDeclaration
             | variableDeclaration
             | importDeclaration
 
@@ -25,11 +25,11 @@ componentDeclaration
         | standalone
         | importDeclaration
         | template
-        | style;
+        | styles;
 selector :SELECTOR COLON STRING_LIT ;
 standalone : STANDALONE COLON isboolean  ;
 template :TEMPLATE COLON STRING_LIT ;
-style :STYLE COLON LBRACKET STRING_LIT RBRACKET ;
+styles :STYLES COLON LBRACKET STRING_LIT RBRACKET ;
 isboolean :TRUE | FALSE;
 
 
@@ -53,12 +53,23 @@ classMember
 
 propertyDeclaration
     : ID COLON type ASSIGN initvalue SEMICOLON?
+    | ID COLON type  (OR ID ASSIGN ID)? SEMICOLON ?
+
     ;
 
 methodDeclaration
-    : ID LPAREN parameter* RPAREN COLON type? SEMICOLON
+    : ID LPAREN parameterList? RPAREN COLON type? LBRACE methodBody RBRACE
     ;
+methodBody :(statementMethod)* ;
 
+
+
+statementMethod :
+ID ASSIGN expression SEMICOLON
+| THIS DOT ID ASSIGN ID SEMICOLON
+|THIS DOT ID ASSIGN expression SEMICOLON
+| expression SEMICOLON
+                     ;
 interfaceDeclaration
     : INTERFACE ID LBRACE interfaceMember* RBRACE
     ;
@@ -68,20 +79,19 @@ interfaceMember
     | methodDeclaration
     ;
 
-functionDeclaration
-    : FUNCTION ID LPAREN parameter* RPAREN COLON type? SEMICOLON
-    ;
-
 parameter
     : ID COLON type
     ;
-
+parameterList
+    : parameter (COMMA parameter)* // قائمة المعاملات، مفصولة بفواصل
+    ;
 variableDeclaration
-    : (CONST | LET | VAR) ID COLON type ASSIGN expression SEMICOLON
+    : (CONST | LET | VAR ) ID   ASSIGN expression
     ;
 
 importDeclaration
     : IMPORT LBRACE ID RBRACE FROM STRING_LIT SEMICOLON
+    | IMPORT LBRACE COMPONENT RBRACE FROM STRING_LIT SEMICOLON
     | IMPORTS COLON LBRACKET ID? RBRACKET
     ;
 
@@ -103,11 +113,12 @@ bodylist
     ;
 
 object
-    : LBRACE bodyobject RBRACE
+    : LBRACE bodyobject RBRACE COMMA?
     ;
 
 bodyobject
-    : (ID COLON initvalue (COMMA ID COLON initvalue)*)?
+    : (ID COLON initvalue (COMMA ID COLON initvalue COMMA?)*)?
+
     ;
 
    initvalue
@@ -121,7 +132,9 @@ bodyobject
 expression  : STRING_LIT
             | NUMBER_LIT
             | ID
+            |isboolean
             | functionCall
+            | variableDeclaration
             ;
 
 functionCall
@@ -130,7 +143,6 @@ functionCall
 
 argument    : expression
             ;
-
 
 // Starting rule for parsing a TypeScript file
 //typescriptFile : statement* EOF;

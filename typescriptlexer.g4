@@ -20,7 +20,7 @@ SELECTOR  : 'selector';   // Add 'selector' as a keyword
 STANDALONE: 'standalone';  // Add 'standalone' as a keyword
 IMPORTS   : 'imports';
 TEMPLATE : 'tamplate';
-STYLE : 'style';
+STYLES : 'styles';
 
 
 
@@ -37,7 +37,7 @@ COLON      : ':';
 DOT        : '.';
 SEMICOLON  : ';';
 EQUALS     : '==';
-
+THIS: 'this';
 // Operators
 ASSIGN     : '=';
 PLUS       : '+';
@@ -54,7 +54,6 @@ LPAREN     : '(';
 RPAREN     : ')';
 LBRACE     : '{';
 RBRACE     : '}';
-
 // Identifiers (variables, functions, etc.)
 
 TRUE : 'true';
@@ -78,3 +77,4 @@ AS         : 'as';
 TYPE       : 'type';
 LBRACKET   : '[';
 RBRACKET   : ']';
+OR : '|';

@@ -59,11 +59,11 @@ public interface typescriptparserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTemplate(typescriptparser.TemplateContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link typescriptparser#style}.
+	 * Visit a parse tree produced by {@link typescriptparser#styles}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStyle(typescriptparser.StyleContext ctx);
+	T visitStyles(typescriptparser.StylesContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link typescriptparser#isboolean}.
 	 * @param ctx the parse tree
@@ -101,6 +101,18 @@ public interface typescriptparserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMethodDeclaration(typescriptparser.MethodDeclarationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link typescriptparser#methodBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethodBody(typescriptparser.MethodBodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#statementMethod}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatementMethod(typescriptparser.StatementMethodContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link typescriptparser#interfaceDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -113,17 +125,17 @@ public interface typescriptparserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInterfaceMember(typescriptparser.InterfaceMemberContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link typescriptparser#functionDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionDeclaration(typescriptparser.FunctionDeclarationContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link typescriptparser#parameter}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitParameter(typescriptparser.ParameterContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#parameterList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParameterList(typescriptparser.ParameterListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link typescriptparser#variableDeclaration}.
 	 * @param ctx the parse tree
@@ -190,34 +202,4 @@ public interface typescriptparserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitArgument(typescriptparser.ArgumentContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link typescriptparser#typescriptFile}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypescriptFile(typescriptparser.TypescriptFileContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link typescriptparser#importStatement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitImportStatement(typescriptparser.ImportStatementContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link typescriptparser#importSpecifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitImportSpecifier(typescriptparser.ImportSpecifierContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link typescriptparser#classBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassBody(typescriptparser.ClassBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link typescriptparser#classBodyContent}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassBodyContent(typescriptparser.ClassBodyContentContext ctx);
 }
