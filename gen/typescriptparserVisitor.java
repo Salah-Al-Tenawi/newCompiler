@@ -1,0 +1,223 @@
+// Generated from C:/Users/SALAH/IdeaProjects/untitledCompiler/typescriptparser.g4 by ANTLR 4.13.2
+package gen;
+import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+
+/**
+ * This interface defines a complete generic visitor for a parse tree produced
+ * by {@link typescriptparser}.
+ *
+ * @param <T> The return type of the visit operation. Use {@link Void} for
+ * operations with no return type.
+ */
+public interface typescriptparserVisitor<T> extends ParseTreeVisitor<T> {
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#program}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProgram(typescriptparser.ProgramContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatement(typescriptparser.StatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#componentDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComponentDeclaration(typescriptparser.ComponentDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#componentDeclarationBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComponentDeclarationBody(typescriptparser.ComponentDeclarationBodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#componentBodyElement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComponentBodyElement(typescriptparser.ComponentBodyElementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#selector}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSelector(typescriptparser.SelectorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#standalone}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStandalone(typescriptparser.StandaloneContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#template}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTemplate(typescriptparser.TemplateContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#style}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStyle(typescriptparser.StyleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#isboolean}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIsboolean(typescriptparser.IsbooleanContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#classDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassDeclaration(typescriptparser.ClassDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#classDeclarationBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassDeclarationBody(typescriptparser.ClassDeclarationBodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#classMember}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassMember(typescriptparser.ClassMemberContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#propertyDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPropertyDeclaration(typescriptparser.PropertyDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#methodDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethodDeclaration(typescriptparser.MethodDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#interfaceDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceDeclaration(typescriptparser.InterfaceDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#interfaceMember}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterfaceMember(typescriptparser.InterfaceMemberContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#functionDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionDeclaration(typescriptparser.FunctionDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#parameter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParameter(typescriptparser.ParameterContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#variableDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableDeclaration(typescriptparser.VariableDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#importDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImportDeclaration(typescriptparser.ImportDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitType(typescriptparser.TypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitList(typescriptparser.ListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#bodylist}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBodylist(typescriptparser.BodylistContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#object}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitObject(typescriptparser.ObjectContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#bodyobject}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBodyobject(typescriptparser.BodyobjectContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#initvalue}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInitvalue(typescriptparser.InitvalueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression(typescriptparser.ExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#functionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(typescriptparser.FunctionCallContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#argument}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArgument(typescriptparser.ArgumentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#typescriptFile}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypescriptFile(typescriptparser.TypescriptFileContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#importStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImportStatement(typescriptparser.ImportStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#importSpecifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImportSpecifier(typescriptparser.ImportSpecifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#classBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassBody(typescriptparser.ClassBodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#classBodyContent}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassBodyContent(typescriptparser.ClassBodyContentContext ctx);
+}
