@@ -23,7 +23,6 @@ TEMPLATE : 'template' ->pushMode(HTML);
 STYLES : 'styles' ->pushMode(CSS);
 
 
-
 // Type annotations
 STRING_TYPE : 'string';
 NUMBER_TYPE : 'number';
@@ -85,8 +84,7 @@ mode HTML ;
 
 LINE_COMMENT_HTML: '//' ~[\r\n]* -> skip;
 BLOCK_COMMENT_HTML: '/*' .*? '*/' -> skip;
-// Start of the template block
-BACKTICK_HTML: '`';                          // End of the template block
+// Start of the template block                // End of the template block
 
 // Tag-related tokens
 TAG_OPEN_START_HTML    : '<' NAME_HTML;                     // Opening tag start: <div
@@ -110,13 +108,10 @@ INTERPOLATION_START_HTML : '{{';                         // Start of Angular int
 INTERPOLATION_END_HTML  : '}}';                         // End of Angular interpolation
 DOT_HTML               : '.';                          // Dot for object path access (e.g., product.name)
 NAME_HTML: [a-zA-Z_][a-zA-Z0-9_!.-]*;
-END_TEMPLATE :'`,' ->popMode;
-// Plain text content inside tags
-//TEXT              : ~[<`\r\n{}!]+;                 // Allow text excluding <, `, {, }, !, and newlines
-
-// General tokens
 WS_HTML                : [ \t\r\n]+ -> skip;           // Ignore whitespace globally
+END_TEMPLATE : '`,' -> popMode;
 
+BACKTICK_HTML: '`';
 
 mode CSS ;
 BACKTICK_CSS: '`';
@@ -136,7 +131,9 @@ BLOCK_COMMENT_CSS: '/*' .*? '*/' -> skip;
 PX   : 'px';
 EM   : 'em';
 REM  : 'rem';
-ID_CSS : [0-9]+ (PX | EM | REM | PERCENT)?  // أرقام مع أو بدون وحدات
-  | '#' [a-fA-F0-9]{3,6}              // ألوان سداسية
-  | 'rgb' '(' [0-9]{1,3} ',' [0-9]{1,3} ',' [0-9]{1,3} ')' // ألوان RGB
-  | [a-zA-Z_][a-zA-Z0-9_-]*;          // معرفات CSS
+ID_CSS
+    : [0-9]+ (PX | EM | REM | PERCENT)?
+    |'#'[a-zA-Z_][a-zA-Z0-9_]*
+    | '#' [a-fA-F0-9]{3,6}                 // ألوان سداسية
+    | 'rgb' '(' [0-9]{1,3} ',' [0-9]{1,3} ',' [0-9]{1,3} ')' // ألوان RGB
+    | [a-zA-Z_-][a-zA-Z0-9_-]*;

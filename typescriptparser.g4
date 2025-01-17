@@ -198,6 +198,6 @@ interpolation
     // css parser
     cssBody : BACKTICK_CSS  cssObjects  BACKTICK_CSS COMMA_CSS?;
 cssObjects : csselement? (COMMA_CSS? csselement)*;
-    csselement : DOT_CSS ID_CSS LBRACE_CSS bodyelement+ RBRACE_CSS;
+    csselement : DOT_CSS ID_CSS+ LBRACE_CSS bodyelement+ RBRACE_CSS;
     bodyelement : ID_CSS COLON_CSS cssValue SEMICOLON_CSS;
-     cssValue :  (ID_CSS | PERCENT) ID_CSS? ;
+     cssValue : (PERCENT | ID_CSS) (ID_CSS ID_CSS?)? ;
