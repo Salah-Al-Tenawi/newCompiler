@@ -7,7 +7,7 @@ program     : statement+;
 
 // Statements
 statement   :
-              componentDeclaration
+             componentDeclaration
             |classDeclaration
             | interfaceDeclaration
             | methodDeclaration
@@ -17,7 +17,8 @@ statement   :
             ;
 // Class Declaration
 componentDeclaration
-    : DECORATOR COMPONENT LPAREN LBRACE componentDeclarationBody RBRACE RPAREN;
+    : DECORATOR COMPONENT LPAREN LBRACE componentDeclarationBody RBRACE RPAREN
+     ;
     componentDeclarationBody
         : (componentBodyElement COMMA? (COMMA componentBodyElement)* )?; // السماح بأكثر من عنصر مع فواصل
     componentBodyElement
@@ -28,11 +29,16 @@ componentDeclaration
         | styles;
 selector :SELECTOR COLON STRING_LIT ;
 standalone : STANDALONE COLON isboolean  ;
-template :TEMPLATE COLON STRING_LIT ;
-styles :STYLES COLON LBRACKET STRING_LIT RBRACKET ;
+template
+    : TEMPLATE COLON_HTML BACKTICK_HTML  element* END_TEMPLATE
+    ;
+
+styles :STYLES COLON_CSS OPEN_LIST cssBody CLOSE_LIST COMMA? ;
+
+
+
+
 isboolean :TRUE | FALSE;
-
-
 
 
 classDeclaration :
@@ -143,37 +149,55 @@ functionCall
 
 argument    : expression
             ;
-
-// Starting rule for parsing a TypeScript file
-//typescriptFile : statement* EOF;
-
-// Handle import statements
-//importStatement
-//    : IMPORT importSpecifier FROM STRING_LIT   SEMICOLON
-//    ;
-
-//importSpecifier
-//    : LBRACE ID (COMMA ID)* RBRACE       // Handles imports like `{ Component }`
-//    | ID                                  // Handles default imports like `import {Something} from 'module'`
-//    ;
+// HTML PARSER
+// Root rule: the entire template
 
 
-/*importStatement
-    : IMPORT STRING_LIT FROM DECORATOR  SEMICOLON
+// An element can be a tag, plain text, or interpolation
+element
+    : tag                                  // A tag
+    | NAME_HTML (COLON_HTML)?                               // Plain text content
+    | interpolation                        // Angular-like interpolation {{ ... }}
     ;
-*/
-// Handle component declarations
+
+// Tags: opening and closing tags with optional content
+tag
+    : openingTag element* closingTag       // Regular tag with content inside
+    | selfClosingTag                       // Self-closing tag (e.g., <img />)
+    ;
+
+// Opening HTML tag
+openingTag
+    : TAG_OPEN_START_HTML attributes* TAG_CLOSE_END_HTML  // Opening tag with optional attributes
+    ;
+
+// Closing HTML tag
+closingTag
+    : TAG_CLOSE_START_HTML TAG_CLOSE_END_HTML            // Closing tag (e.g., </div>)
+    ;
+
+// Self-closing HTML tag (e.g., <img />)
+selfClosingTag
+    : TAG_OPEN_START_HTML attributes* TAG_END_HTML       // Self-closing tag (e.g., <img />)
+    ;
+
+// Attributes for tags (e.g., class="wrapper", src="image.jpg")
+attributes
+    : NAME_HTML ATTRIBUTE_EQUALS_HTML STRING_HTML            // Basic attribute
+    | STRUCTURAL_DIR_HTML ATTRIBUTE_EQUALS_HTML STRING_HTML  // Structural directive (e.g., *ngFor)
+    | BINDING_HTML ATTRIBUTE_EQUALS_HTML STRING_HTML         // Property binding (e.g., [src])
+    | EVENT_BINDING_HTML ATTRIBUTE_EQUALS_HTML STRING_HTML   // Event binding (e.g., (click))
+    ;
+
+// Interpolation syntax for Angular-like template expressions
+interpolation
+    : INTERPOLATION_START_HTML NAME_HTML INTERPOLATION_END_HTML                         // Angular-like interpolation
+    ;
 
 
-//classBody
-//    : LBRACE classBodyContent* RBRACE
-//    ;
-//
-//classBodyContent
-//    : methodDeclaration
-//    | propertyDeclaration
-//    ;
-
-
-
-
+    // css parser
+    cssBody : BACKTICK_CSS  cssObjects  BACKTICK_CSS COMMA_CSS?;
+cssObjects : csselement (COMMA_CSS csselement)*;
+    csselement : DOT_CSS ID_CSS LBRACE_CSS bodyelement+ RBRACE_CSS;
+    bodyelement : ID_CSS COLON_CSS cssValue SEMICOLON_CSS;
+     cssValue : ID_CSS | PERCENT;  // السماح بأكثر من كلمة للقيم

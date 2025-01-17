@@ -202,4 +202,76 @@ public interface typescriptparserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitArgument(typescriptparser.ArgumentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#element}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElement(typescriptparser.ElementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#tag}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTag(typescriptparser.TagContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#openingTag}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpeningTag(typescriptparser.OpeningTagContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#closingTag}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClosingTag(typescriptparser.ClosingTagContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#selfClosingTag}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSelfClosingTag(typescriptparser.SelfClosingTagContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#attributes}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAttributes(typescriptparser.AttributesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#interpolation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterpolation(typescriptparser.InterpolationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#cssBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCssBody(typescriptparser.CssBodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#cssObjects}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCssObjects(typescriptparser.CssObjectsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#csselement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCsselement(typescriptparser.CsselementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#bodyelement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBodyelement(typescriptparser.BodyelementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link typescriptparser#cssValue}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCssValue(typescriptparser.CssValueContext ctx);
 }
