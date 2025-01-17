@@ -197,7 +197,7 @@ interpolation
 
     // css parser
     cssBody : BACKTICK_CSS  cssObjects  BACKTICK_CSS COMMA_CSS?;
-cssObjects : csselement (COMMA_CSS csselement)*;
+cssObjects : csselement? (COMMA_CSS? csselement)*;
     csselement : DOT_CSS ID_CSS LBRACE_CSS bodyelement+ RBRACE_CSS;
     bodyelement : ID_CSS COLON_CSS cssValue SEMICOLON_CSS;
-     cssValue : ID_CSS | PERCENT;  // السماح بأكثر من كلمة للقيم
+     cssValue :  (ID_CSS | PERCENT) ID_CSS? ;
