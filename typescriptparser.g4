@@ -19,9 +19,9 @@ statement   :
 componentDeclaration
     : DECORATOR COMPONENT LPAREN LBRACE componentDeclarationBody RBRACE RPAREN
      ;
-    componentDeclarationBody
-        : (componentBodyElement COMMA? (COMMA componentBodyElement)* )?; // السماح بأكثر من عنصر مع فواصل
-    componentBodyElement
+componentDeclarationBody
+        : (componentBodyElement  (COMMA componentBodyElement)* )?; // السماح بأكثر من عنصر مع فواصل
+ componentBodyElement
         : selector
         | standalone
         | importDeclaration
@@ -46,7 +46,7 @@ classDeclaration :
     ;
 
 classDeclarationBody
-    : LBRACE (classMember SEMICOLON?)* RBRACE  // السماح بعدة أعضاء
+    : LBRACE (classMember SEMICOLON?)* RBRACE
     ;
 
 classMember
@@ -197,7 +197,7 @@ interpolation
 
     // css parser
     cssBody : BACKTICK_CSS  cssObjects  BACKTICK_CSS COMMA_CSS?;
-cssObjects : csselement? (COMMA_CSS? csselement)*;
-    csselement : DOT_CSS ID_CSS+ LBRACE_CSS bodyelement+ RBRACE_CSS;
-    bodyelement : ID_CSS COLON_CSS cssValue SEMICOLON_CSS;
+cssObjects : cssElement? (COMMA_CSS? cssElement)*;
+    cssElement : DOT_CSS ID_CSS+ LBRACE_CSS bodyCssElement+ RBRACE_CSS;
+    bodyCssElement : ID_CSS COLON_CSS cssValue SEMICOLON_CSS;
      cssValue : (PERCENT | ID_CSS) (ID_CSS ID_CSS?)? ;

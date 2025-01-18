@@ -22,7 +22,6 @@ IMPORTS   : 'imports';
 TEMPLATE : 'template' ->pushMode(HTML);
 STYLES : 'styles' ->pushMode(CSS);
 
-
 // Type annotations
 STRING_TYPE : 'string';
 NUMBER_TYPE : 'number';
@@ -81,7 +80,7 @@ BACKTICK : '`';
 
 
 mode HTML ;
-
+END_TEMPLATE : '`,'-> popMode;
 LINE_COMMENT_HTML: '//' ~[\r\n]* -> skip;
 BLOCK_COMMENT_HTML: '/*' .*? '*/' -> skip;
 // Start of the template block                // End of the template block
@@ -108,8 +107,7 @@ INTERPOLATION_START_HTML : '{{';                         // Start of Angular int
 INTERPOLATION_END_HTML  : '}}';                         // End of Angular interpolation
 DOT_HTML               : '.';                          // Dot for object path access (e.g., product.name)
 NAME_HTML: [a-zA-Z_][a-zA-Z0-9_!.-]*;
-WS_HTML                : [ \t\r\n]+ -> skip;           // Ignore whitespace globally
-END_TEMPLATE : '`,' -> popMode;
+WS_HTML: [ \t\r\n]+ -> skip;           // Ignore whitespace globally
 
 BACKTICK_HTML: '`';
 
@@ -133,7 +131,4 @@ EM   : 'em';
 REM  : 'rem';
 ID_CSS
     : [0-9]+ (PX | EM | REM | PERCENT)?
-    |'#'[a-zA-Z_][a-zA-Z0-9_]*
-    | '#' [a-fA-F0-9]{3,6}                 // ألوان سداسية
-    | 'rgb' '(' [0-9]{1,3} ',' [0-9]{1,3} ',' [0-9]{1,3} ')' // ألوان RGB
     | [a-zA-Z_-][a-zA-Z0-9_-]*;
